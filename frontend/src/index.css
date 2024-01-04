@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: white;
+}
+.queen {
+  border: 1px solid white;
+  border: none;
+
+  z-index: 0;
+  border-radius: 30px;
+}
+.queen::before {
+  content: "";
+  position: absolute;
+  background-color: rgb(80, 7, 36);
+  border-radius: 30px;
+  background: linear-gradient(45deg, #ff3d3d, rgb(255, 0, 132), #ff0000);
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+
+  background-size: 200%;
+  filter: blur(10px);
+  opacity: 0;
+  z-index: -1px;
+  transition: opacity 0.3s ease-in-out;
+  animation: queen 20s linear infinite;
+}
+@keyframes queen {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 200% 0;
+  }
+  0% {
+    background-position: 0 0;
+  }
+}
+.queen:hover::before {
+  opacity: 1;
+}
+.queen::after {
+  position: absolute;
+  top: 2;
+  bottom: 0;
+  background: rgb(80, 7, 36);
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+}
+.queen::after {
+  content: "";
+  background: rgb(80, 7, 36);
+  border: 1px white;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  z-index: 1px;
+}
